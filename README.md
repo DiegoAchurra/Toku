@@ -2,6 +2,14 @@
 
 This repository contains a **Superhero Battle Simulator** built using the [Superhero API](https://www.superheroapi.com/) to simulate battles between randomly chosen heroes and villains. This project was developed based on the instructions outlined in the **"Pelea de personajes"** PDF document, which required simulating battles between randomly generated teams.
 
+### Notes for Reviewers:
+
+- **Quick Test**: For a fast evaluation, a script named `TestScript.py` is included. This can be executed on any machine with Python installed and the `requests` library. It provides a console-based battle simulation, allowing you to test the core logic without needing to deploy the full web application.
+
+- **Web App**: The project has also been deployed to Azure Web App Service, providing an accessible version that doesn't require cloning the repository. Please note, as this is a session-based project without a database, data is temporarily handled in the browser session and resets with each new session.
+
+- **Local Deployment**: If you'd like to run this project locally, please reach out to me at achurradiego@gmail.com for the `.env` file. This file includes the Django Secret Key and SMTP credentials necessary for email handling. Once you have the file, the project can be set up and tested on your local environment.
+
 ## Features
 
 - **Team Generation**: The simulator randomly selects two teams of 5 characters, with no repeating IDs, and ensures that each team is either good or bad based on the majority alignment of its members.
