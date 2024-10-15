@@ -23,6 +23,20 @@ This repository contains a **Superhero Battle Simulator** built using the [Super
 - **Mail Summary**:
   - After the simulation, the user can input an email address, and the system will send a summary of the battle to the provided email using a mail service.
 
+## Tech Stack
+
+- **Python & Django**: The project uses Django as the main framework. Given the scope of this project, it was unnecessary to build a separate frontend with React or similar tools. Instead, Django's templating system efficiently handles both backend logic and frontend rendering.
+
+- **Bootstrap**: Bootstrap was integrated to style the HTML templates, making the interface user-friendly and responsive without needing extensive custom CSS.
+
+- **Superhero API**: This external API provides the hero data, including power stats, alignments, and images, which are essential for creating the teams and executing the battle logic.
+
+- **Django Email Backend**: The app uses Django's built-in email functionality to send battle summaries. This feature enables users to receive a well-structured HTML email report after the battle concludes.
+
+- **dotenv**: Environment variables, such as the API keys and email configuration, are stored securely using the `dotenv` package, which ensures sensitive information is not hardcoded into the codebase.
+
+- **No Database Dependencies**: The project does not rely on a database, as no persistent data is stored between sessions. As a result, there is no need to include or configure a production database, which simplifies the deployment process.
+
 ## Project Structure
 
 - **urls.py**: Defines the routing for the application, creating three key endpoints:
