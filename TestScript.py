@@ -1,4 +1,23 @@
 import random
+import requests
+
+SUPERHERO_API_KEY = '734f9f77079f5b0c9dfe786f8d072cb6'
+
+def fetch_superhero_data(hero_id):
+    url = f"https://superheroapi.com/api/{SUPERHERO_API_KEY}/{hero_id}"
+    response = requests.get(url)
+    return response.json() if response.status_code == 200 else None
+
+def determine_team_alignment(team):
+    good_count = sum(1 for hero in team if hero['biography']['alignment'] == 'good')
+    bad_count = sum(1 for hero in team if hero['biography']['alignment'] == 'bad')
+
+    if good_count > bad_count:
+        return 'good'
+    elif bad_count > good_count:
+        return 'bad'
+    else:
+        return random.choice(['good', 'bad'])
 
 # Function to calculate Filiation Coefficient (FB)
 def calculate_filiation_bonus(character_alignment, team_alignment):
@@ -232,3 +251,31 @@ def simulate_battle(team_a, team_b, alignment_team_a, alignment_team_b):
 
     # Return the final state of the battle along with the original teams and the winning team's survivors
     return final_winner, original_team_a, original_team_b, battle_tale, winning_team
+
+
+if __name__ == '__main__':
+    # Initialize the battle simulation
+    hero_ids = set()  # Set to track used hero IDs
+
+    # Function to get a unique hero ID
+    def get_unique_hero_id():
+        while True:
+            hero_id = random.randint(1, 731)
+            if hero_id not in hero_ids:
+                hero_ids.add(hero_id)
+                return hero_id
+
+    # Fetching unique heroes for both teams
+    team_a = [fetch_superhero_data(get_unique_hero_id()) for _ in range(5)]
+    team_b = [fetch_superhero_data(get_unique_hero_id()) for _ in range(5)]
+
+    # Determine team alignment
+    alignment_team_a = determine_team_alignment(team_a)
+    alignment_team_b = determine_team_alignment(team_b)
+
+    # Simulating the battle and collecting the tale (step-by-step process)
+    winner, original_team_a, original_team_b, battle_tale, winning_team = simulate_battle(
+        team_a, team_b, alignment_team_a, alignment_team_b
+    )
+
+    print(f'\nAnd the winning Team is: {winner}')

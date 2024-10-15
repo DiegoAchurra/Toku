@@ -41,6 +41,8 @@ def battle_simulation_view(request):
             team_a, team_b, alignment_team_a, alignment_team_b
         )
 
+        print(f'\nAnd the winning Team is: {winner}')
+
         # Store battle results in session
         request.session['team_a'] = original_team_a
         request.session['team_b'] = original_team_b

@@ -4,19 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12c0c3fb-990d-4c2a-84b8-1b180f352a21" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/Toku.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clash/Alignment/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clash/Battle/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clash/FetchHero/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/clash/battle-simulation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+    <list default="true" id="12c0c3fb-990d-4c2a-84b8-1b180f352a21" name="Changes" comment="Project v1">
+      <change afterPath="$PROJECT_DIR$/clash/management/commands/Single_Script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clash/Battle/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/clash/Battle/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clash/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clash/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smashbros/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/smashbros/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,6 +35,15 @@
   }
 }]]></component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Project v1">
+      <option name="closed" value="true" />
+      <created>1728977189692</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728977189692</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -48,5 +62,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project v1" />
   </component>
 </project>
