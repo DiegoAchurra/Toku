@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Battle Results</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5 mb-5 text-center">
+        <h1>Welcome to the Battle Simulation!</h1>
+        <form method="POST" action="{% url 'battle_simulation' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary mt-3">Start Simulation</button>
+        </form>
+    </div>
+</body>
+</html>

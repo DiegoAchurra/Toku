@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Battle Results</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h1 class="text-center text-success">Battle Simulation</h1>
+
+            {% if team_a %}
+            <h2 class="text-info">Team A ({{ team_a_alignment }})</h2>
+            <ul class="list-group mb-4">
+                {% for hero in team_a %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <!-- Display hero image next to the name -->
+                            <img src="{{ hero.image.url }}" alt="{{ hero.name }} image" class="img-thumbnail mr-3" style="width: 50px; height: 50px;">
+                            <span>{{ hero.name }} ({{ hero.biography.alignment }})</span>
+                        </div>
+                        <span class="badge badge-primary badge-pill">{{ hero.hp }} HP</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if team_b %}
+            <h2 class="text-info">Team B ({{ team_b_alignment }})</h2>
+            <ul class="list-group mb-4">
+                {% for hero in team_b %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <!-- Display hero image next to the name -->
+                            <img src="{{ hero.image.url }}" alt="{{ hero.name }} image" class="img-thumbnail mr-3" style="width: 50px; height: 50px;">
+                            <span>{{ hero.name }} ({{ hero.biography.alignment }})</span>
+                        </div>
+                        <span class="badge badge-primary badge-pill">{{ hero.hp }} HP</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if battle_tale %}
+            <div class="battle-tale">
+                <h2 class="text-danger">Battles</h2>
+                <ul class="list-group mb-4">
+                    {% for round in battle_tale %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><span class="badge badge-primary">Round {{ round.round_num }}:</span><br/><span> {{ round.hero_a }} vs {{ round.hero_b }}</span></span>
+                            <span><span class="badge badge-success">Winner:</span><br/><span> {{ round.winner }}</span></span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if winner %}
+            <h2 class="text-success">Winner: {{ winner }}</h2>
+
+            <h3 class="text-info">Surviving Heroes</h3>
+            <ul class="list-group mb-4">
+                {% for hero in winning_team %}
+                    <li class="list-group-item">{{ hero.name }}</li>
+                {% endfor %}
+            </ul>
+
+            <!-- Form to submit the email for battle report -->
+            <form method="POST" action="{% url 'send_battle_email' %}" class="mb-4">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Enter email to send battle report:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Send Battle to Email</button>
+            </form>
+            {% endif %}
+
+            <div class="d-flex justify-content-between">
+                <!-- Button to go back to the index page (clears session) -->
+                <form method="GET" action="{% url 'index' %}">
+                    <button type="submit" class="btn btn-secondary">Go Back to Index</button>
+                </form>
+
+                <!-- Button to re-simulate the battle (restarts the simulation) -->
+                <form method="POST" action="{% url 'battle_simulation' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning">Re-Simulate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
