@@ -1,4 +1,5 @@
 from django.urls import path
+
 from clash.views import index_view, battle_simulation_view, send_battle_email_view
 
 urlpatterns = [

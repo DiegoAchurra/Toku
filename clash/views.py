@@ -1,12 +1,14 @@
-from django.core.mail import send_mail
+import random
+
 from django.conf import settings
 from django.shortcuts import render, redirect
-import random
+from django.core.mail import EmailMultiAlternatives
+
 from .FetchHero.service import fetch_superhero_data
 from .Battle.service import simulate_battle
 from .Alignment.service import determine_team_alignment
-from django.core.mail import EmailMultiAlternatives
 
+# ---------------------------------------------------------------------------------------------------- #
 # Index page view (title and button)
 def index_view(request):
     # Clear session data whenever the index page is loaded
@@ -15,6 +17,7 @@ def index_view(request):
     # Show the simple index page with just the button
     return render(request, 'index.html')
 
+# ---------------------------------------------------------------------------------------------------- #
 # Battle simulation view
 def battle_simulation_view(request):
     if request.method == 'POST':
@@ -69,7 +72,8 @@ def battle_simulation_view(request):
     }
     return render(request, 'clash/battle-simulation.html', context)
 
-# Email sending view (same as before)
+# ---------------------------------------------------------------------------------------------------- #
+# Email sending view
 def send_battle_email_view(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -128,3 +132,5 @@ def send_battle_email_view(request):
         return redirect('battle_simulation')
 
     return redirect('index')
+
+# ---------------------------------------------------------------------------------------------------- #

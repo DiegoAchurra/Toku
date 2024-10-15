@@ -1,4 +1,5 @@
 import random
+
 def determine_team_alignment(team):
     good_count = sum(1 for hero in team if hero['biography']['alignment'] == 'good')
     bad_count = sum(1 for hero in team if hero['biography']['alignment'] == 'bad')
